@@ -67,8 +67,10 @@ if __name__ == '__main__':
          "eigengradcam": EigenGradCAM,
          "layercam": LayerCAM}
 
-    model = models.resnet50(pretrained=True)
+    #model = models.resnet50(pretrained=True)
+    model = torch.load("./underextrusion_model.pth", map_location=torch.device('cpu'))
 
+    #print(model)
     # Choose the target layer you want to compute the visualization for.
     # Usually this will be the last convolutional layer in the model.
     # Some common choices can be:
@@ -115,6 +117,6 @@ if __name__ == '__main__':
     cam_gb = deprocess_image(cam_mask * gb)
     gb = deprocess_image(gb)
 
-    cv2.imwrite(f'{args.method}_cam.jpg', cam_image)
-    cv2.imwrite(f'{args.method}_gb.jpg', gb)
-    cv2.imwrite(f'{args.method}_cam_gb.jpg', cam_gb)
+    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[1]}_{args.method}_cam.jpg', cam_image)
+    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[1]}_{args.method}_gb.jpg', gb)
+    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[1]}_{args.method}_cam_gb.jpg', cam_gb)
