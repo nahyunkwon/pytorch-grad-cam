@@ -117,6 +117,9 @@ if __name__ == '__main__':
     cam_gb = deprocess_image(cam_mask * gb)
     gb = deprocess_image(gb)
 
-    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[1]}_{args.method}_cam.jpg', cam_image)
-    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[1]}_{args.method}_gb.jpg', gb)
-    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[1]}_{args.method}_cam_gb.jpg', cam_gb)
+    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[2]}_{args.method}_cam.jpg', cam_image)
+    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[2]}_{args.method}_gb.jpg', gb)
+    cv2.imwrite(f'{args.image_path.split(".jpg")[0].split("/")[2]}_{args.method}_cam_gb.jpg', cam_gb)
+
+    # python cam.py --image-path ./3d_examples/11169_lbdt65.jpg --method gradcam
+    # python cam.py --image-path ./3d_examples/12008_l2lwmg.jpg --method gradcam
